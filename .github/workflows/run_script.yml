@@ -1,6 +1,9 @@
 name: Run Python Script
 
 on:
+  push:
+    branches:
+      - main        # triggers workflow on every push to main
   schedule:
     - cron: "*/1 * * * *"   # every 1 minutes (fastest allowed)
   workflow_dispatch:
