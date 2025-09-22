@@ -29,12 +29,13 @@ The **Buff Marketplace Monitor** is an **automated Python script** that monitors
 2.  **GitHub Actions Workflow**: A YAML file that schedules the script to run automatically. By default, it runs every minute, though this can be adjusted.
 3.  **Secrets Management**: API tokens for both Buff and Telegram are stored securely as **GitHub Secrets**, preventing them from being exposed in the code.
 
-```mermaid
+
 graph TD
     A[GitHub Actions] --> B(Runs buff-script.py on schedule);
     B --> C[Python Script];
     C --> D[Fetches Buff marketplace items];
     D --> E[Sends Telegram notifications];
+
 
 ## Setup Instructions
 
@@ -47,17 +48,17 @@ graph TD
 
 2.  **Add GitHub Secrets**:
 
-    Navigate to **`Settings` → `Secrets and variables` → `Actions`** in your repository and add the following new repository secrets:
+    Navigate to **Settings → Secrets and variables → Actions** in your repository and add the following new repository secrets:
 
     | Name | Value |
     | :--- | :--- |
-    | `BUFF_API_TOKEN` | Your Buff API Bearer token |
-    | `TELEGRAM_BOT_TOKEN`| Your Telegram Bot token |
-    | `TELEGRAM_CHAT_ID` | Your Telegram chat ID |
+    | BUFF_API_TOKEN | Your Buff API Bearer token |
+    | TELEGRAM_BOT_TOKEN| Your Telegram Bot token |
+    | TELEGRAM_CHAT_ID | Your Telegram chat ID |
 
 3.  **Modify the schedule (Optional)**:
 
-    You can change how often the script runs by opening the `.github/workflows/run_script.yml` file and editing the cron schedule. The minimum interval for GitHub Actions is **one minute**.
+    You can change how often the script runs by opening the .github/workflows/run_script.yml file and editing the cron schedule. The minimum interval for GitHub Actions is **one minute**.
 
 ---
 
