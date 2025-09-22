@@ -9,9 +9,9 @@ import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # === CONFIG ===
-BUFF_API_TOKEN = os.environ["BUFF_API_TOKEN"]
-TELEGRAM_BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
-TELEGRAM_CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
+BUFF_API_TOKEN = os.environ.get("BUFF_API_TOKEN")
+TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
+TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 
 # Buff API endpoint
 URL = (
@@ -29,6 +29,10 @@ logging.basicConfig(level=logging.INFO)
 
 def send_telegram_message(text: str):
     """Send a message to your Telegram chat."""
+    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+        logging.warning("Telegram secrets not set. Skipping message.")
+        return
+
     telegram_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     payload = {"chat_id": TELEGRAM_CHAT_ID, "text": text}
     try:
@@ -65,6 +69,10 @@ def main():
                 )
                 logging.info(f"Sending to Telegram: {simplified['name']}")
                 send_telegram_message(msg)
+
+    except Exception as e:
+        logging.error(f"Script error: {e}", exc_info=True)
+        send_telegram_message(f"Script error: {e}")
 
 
 if __name__ == "__main__":
