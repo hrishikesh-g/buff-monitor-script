@@ -1,86 +1,99 @@
-# buff-monitor-script
+# Buff Monitor Script 🛍️
 
-# Buff Marketplace Monitor
+---
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/<your-username>/<your-repo>/run_script.yml?branch=main)
+## Buff Marketplace Monitor
+
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/your-username/your-repo/run_script.yml?branch=main)
+
+---
 
 ## Overview
 
-**Buff Marketplace Monitor** is an automated Python script that monitors items on the [Buff](https://buff.game) PC marketplace and sends real-time notifications to Telegram.  
-This repo is fully GitHub Actions-ready, so the script runs automatically on a schedule without any manual intervention.
+The **Buff Marketplace Monitor** is an **automated Python script** that monitors items on the [Buff](https://buff.game) PC marketplace and sends real-time notifications to Telegram. It's designed to be fully **GitHub Actions-ready**, allowing the script to run automatically on a set schedule without any manual intervention.
 
 ---
 
 ## Features
 
-- ✅ Fetches the latest 100 items from Buff Marketplace (Regular & Premium)  
-- ✅ Sends Telegram notifications with item details (Name, Price, Stock Status)  
-- ✅ Fully automated using GitHub Actions  
-- ✅ Easy to configure using GitHub Secrets for API tokens  
+- ✅ Fetches the latest 100 items from both the Regular and Premium Buff Marketplaces.
+- ✅ Sends **Telegram notifications** containing essential item details like its name, price, and current stock status.
+- ✅ **Fully automated** using GitHub Actions for hands-free operation.
+- ✅ **Easy to configure** by securely storing API tokens in GitHub Secrets.
 
 ---
 
 ## Architecture
 
-1. **Python Script (`buff-script.py`)**: Fetches items and posts messages to Telegram.  
-2. **GitHub Actions Workflow**: Runs the script every minute (adjustable in `.github/workflows/run_script.yml`).  
-3. **Secrets Management**: API tokens stored securely in GitHub Secrets.  
+1.  **Python Script (`buff-script.py`)**: The core of the tool, responsible for fetching marketplace data and sending messages to Telegram.
+2.  **GitHub Actions Workflow**: A YAML file that schedules the script to run automatically. By default, it runs every minute, though this can be adjusted.
+3.  **Secrets Management**: API tokens for both Buff and Telegram are stored securely as **GitHub Secrets**, preventing them from being exposed in the code.
 
-GitHub Actions
-└─ Runs buff-script.py on schedule
-Python Script
-└─ Fetches Buff marketplace items → Sends Telegram notifications
+```mermaid
+graph TD
+    A[GitHub Actions] --> B(Runs buff-script.py on schedule);
+    B --> C[Python Script];
+    C --> D[Fetches Buff marketplace items];
+    D --> E[Sends Telegram notifications];
 
 ## Setup Instructions
 
-1. **Fork/Clone the repo**  
+1.  **Fork or Clone the repository**:
 
-```bash
-git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>
+    ```bash
+    git clone [https://github.com/](https://github.com/)<your-username>/<your-repo>.git
+    cd <your-repo>
+    ```
 
-2. **Add GitHub Secrets**
+2.  **Add GitHub Secrets**:
 
-Go to Settings → Secrets and variables → Actions → New repository secret and add:
+    Navigate to **`Settings` → `Secrets and variables` → `Actions`** in your repository and add the following new repository secrets:
 
-Name	Value
-BUFF_API_TOKEN	Your Buff API Bearer token
-TELEGRAM_BOT_TOKEN	Your Telegram Bot token
-TELEGRAM_CHAT_ID	Your Telegram chat ID
+    | Name | Value |
+    | :--- | :--- |
+    | `BUFF_API_TOKEN` | Your Buff API Bearer token |
+    | `TELEGRAM_BOT_TOKEN`| Your Telegram Bot token |
+    | `TELEGRAM_CHAT_ID` | Your Telegram chat ID |
 
-3. **Modify schedule (optional)**
+3.  **Modify the schedule (Optional)**:
 
-Open .github/workflows/run_script.yml and change the cron schedule. Minimum interval is 1 minute.
+    You can change how often the script runs by opening the `.github/workflows/run_script.yml` file and editing the cron schedule. The minimum interval for GitHub Actions is **one minute**.
+
+---
 
 ## Usage
 
-Once secrets are configured:
+Once you've configured the secrets, the script will run automatically according to the GitHub Actions schedule. You will receive Telegram notifications for every new item fetched.
 
-The script runs automatically according to the GitHub Actions schedule.
+### To Run Locally (for testing):
 
-You will receive Telegram notifications for every new item fetched.
+1.  Install the required packages:
 
-To run locally (for testing):
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-pip install -r requirements.txt
-python buff-script.py
+2.  Execute the script:
+
+    ```bash
+    python buff-script.py
+    ```
+
+---
 
 ## Requirements
 
-Python 3.x
+-   **Python 3.x**
+-   **Python Packages**: `requests`, `urllib3`
+-   **GitHub Actions** (for automation)
 
-Packages: requests, urllib3
-
-GitHub Actions (for automation)
+---
 
 ## Notes
 
-GitHub Actions cannot run workflows more frequently than every 5 minutes.
+-   GitHub Actions workflows cannot run more frequently than **every 5 minutes**. For sub-minute execution (e.g., every 30 seconds), consider deploying the script on a dedicated **VM** or using a service like **Azure Functions**.
+-   The MIT License governs this project, meaning it's free to use, modify, and share.
 
-For sub-minute execution (like 30 seconds), consider deploying on a VM or Azure Function.
-
-## License
-
-MIT License. Free to use, modify, and share.
+---
 
 Made with ❤️ and a little Python magic ✨
