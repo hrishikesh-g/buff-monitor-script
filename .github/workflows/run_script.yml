@@ -5,7 +5,7 @@ on:
     branches:
       - main        # triggers workflow on every push to main
   schedule:
-    - cron: "*/1 * * * *"   # every 1 minutes (fastest allowed)
+    - cron: "*/5 * * * *"   # every 1 minutes (fastest allowed)
   workflow_dispatch:
 
 jobs:
