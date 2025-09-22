@@ -1,0 +1,24 @@
+name: Run Python Script
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"   # every 5 minutes (fastest allowed)
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    env:
+      BUFF_API_TOKEN: ${{ secrets.BUFF_API_TOKEN }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run my script
+        run: python my_script.py
