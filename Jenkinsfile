@@ -22,7 +22,7 @@ pipeline {
                 sh '''
                     echo "Deploying new code to /home/ubuntu/buff-bot..."
                     # copy the repo to your live folder
-                    sudo usr/bin/rsync -av --delete . /home/ubuntu/buff-bot/
+                    sudo /usr/bin/rsync -av --delete . /home/ubuntu/buff-bot/
 
                     # make scripts executable
                     sudo /bin/chmod +x /home/ubuntu/buff-bot/start_buff.sh
