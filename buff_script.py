@@ -66,7 +66,7 @@ def main():
                     f"In Stock: {simplified['inStock']}"
                 )
                 logging.info(f"Sending to Telegram: {simplified['name']}")
-                send_telegram_message(msg)
+                send_telegram_message("THE FULL CD SETUP IS working WOOHOOOOOOOO"+msg)
 
     except Exception as e:
         logging.error(f"Script error: {e}", exc_info=True)
