@@ -22,15 +22,15 @@ pipeline {
                 sh '''
                     echo "Deploying new code to /home/ubuntu/buff-bot..."
                     # copy the repo to your live folder
-                    sudo rsync -av --delete . /home/ubuntu/buff-bot/
+                    sudo usr/bin/rsync -av --delete . /home/ubuntu/buff-bot/
 
                     # make scripts executable
-                    sudo chmod +x /home/ubuntu/buff-bot/start_buff.sh
-                    sudo chmod +x /home/ubuntu/buff-bot/buff_script.py
+                    sudo /bin/chmod +x /home/ubuntu/buff-bot/start_buff.sh
+                    sudo /bin/chmod +x /home/ubuntu/buff-bot/buff_script.py
 
                     echo "Reloading & restarting buff-bot service..."
-                    sudo systemctl daemon-reload
-                    sudo systemctl restart buff-bot.service
+                    sudo /bin/systemctl daemon-reload
+                    sudo /bin/systemctl restart buff-bot.service
                 '''
             }
         }
