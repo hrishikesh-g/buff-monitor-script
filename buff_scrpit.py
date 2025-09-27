@@ -15,9 +15,7 @@ TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 
 # Buff API endpoint
 URL = (
-    "https://app.buff.game/api/marketplace/items"
-    "?limit=100&device=pc&page=1&sort=POPULARITY_DESC"
-    "&type[]=REGULAR&type[]=PREMIUM"
+    "https://app.buff.game/api/marketplace/items?limit=100&device=pc&page=1&sort=POPULARITY_DESC&type[]=REGULAR&type[]=PREMIUM"
 )
 HEADERS = {
     "Authorization": f"Bearer {BUFF_API_TOKEN}",
