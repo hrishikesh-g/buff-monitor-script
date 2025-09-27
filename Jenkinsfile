@@ -25,8 +25,8 @@ pipeline {
                     sudo rsync -av --delete . /home/ubuntu/buff-bot/
 
                     # make scripts executable
-                    chmod +x /home/ubuntu/buff-bot/buff_bot.sh
-                    chmod +x /home/ubuntu/buff-bot/buff_script.py
+                    sudo chmod +x /home/ubuntu/buff-bot/buff_bot.sh
+                    sudo chmod +x /home/ubuntu/buff-bot/buff_script.py
 
                     echo "Reloading & restarting buff-bot service..."
                     sudo systemctl daemon-reload
