@@ -1,7 +1,7 @@
 #!/bin/bash
 
 APP_DIR="/home/ubuntu/buff-bot"
-
+source /home/ubuntu/buff-bot/.env
 cd "$APP_DIR" || exit 1
 
 # activate virtualenv if exists
