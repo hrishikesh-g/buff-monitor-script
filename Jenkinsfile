@@ -20,17 +20,17 @@ pipeline {
         stage('Deploy & Restart Service') {
             steps {
                 sh '''
-                  echo "Deploying new code to /home/ubuntu/buff-bot..."
-                # copy the repo to your live folder
-                rsync -av --delete . /home/ubuntu/buff-bot/
+                    echo "Deploying new code to /home/ubuntu/buff-bot..."
+                    # copy the repo to your live folder
+                    rsync -av --delete . /home/ubuntu/buff-bot/
 
-                # make scripts executable
-                chmod +x /home/ubuntu/buff-bot/buff_bot.sh
-                chmod +x /home/ubuntu/buff-bot/buff_script.py
+                    # make scripts executable
+                    chmod +x /home/ubuntu/buff-bot/buff_bot.sh
+                    chmod +x /home/ubuntu/buff-bot/buff_script.py
 
-                echo "Reloading & restarting buff-bot service..."
-                sudo systemctl daemon-reload
-                sudo systemctl restart buff-bot.service
+                    echo "Reloading & restarting buff-bot service..."
+                    sudo systemctl daemon-reload
+                    sudo systemctl restart buff-bot.service
                 '''
             }
         }
