@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/yourname/buff-bot.git'
+                git branch: 'main', url: 'https://github.com/hrishikesh-g/buff-monitor-script.git'
             }
         }
         stage('Build') {
