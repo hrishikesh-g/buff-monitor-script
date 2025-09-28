@@ -107,3 +107,4 @@ sequenceDiagram
 -   `.env` is **not stored in GitHub**; secrets are handled via **Jenkins credentials**.
 -   Deployment ensures `.env` file is written securely on the VM only.
 -   Scripts run with proper execution permissions using `chmod`.
+---
