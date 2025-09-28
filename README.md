@@ -44,23 +44,23 @@ This diagram illustrates the core components and flow of the Buff Bot system:
 
 The deployment process is fully automated via this pipeline:
 
-```mermaid
-sequenceDiagram
-    participant D as Developer
-    participant G as GitHub
-    participant J as Jenkins
-    participant V as Azure VM
-    participant S as systemd
-    participant T as Telegram
-
-    D->>G: Code Commit (Push)
-    G->>J: Webhook Trigger
-    J->>V: Clone Repo & Rsync to /home/ubuntu/buff-bot
-    J->>V: Write .env Secrets
-    J->>V: Make Scripts Executable
-    J->>S: systemd Reload & Restart buff-bot.service
-    S->>V: Buff Bot Script Runs (Every 120s)
-    V->>T: Sends Notifications/Alerts
+    ```mermaid
+    sequenceDiagram
+        participant D as Developer
+        participant G as GitHub
+        participant J as Jenkins
+        participant V as Azure VM
+        participant S as systemd
+        participant T as Telegram
+    
+        D->>G: Code Commit (Push)
+        G->>J: Webhook Trigger
+        J->>V: Clone Repo & Rsync to /home/ubuntu/buff-bot
+        J->>V: Write .env Secrets
+        J->>V: Make Scripts Executable
+        J->>S: systemd Reload & Restart buff-bot.service
+        S->>V: Buff Bot Script Runs (Every 120s)
+        V->>T: Sends Notifications/Alerts
 
 ## Detailed Pipeline Steps
 
