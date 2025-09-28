@@ -24,6 +24,16 @@ pipeline {
                     # copy the repo to your live folder
                     sudo /usr/bin/rsync -av --delete . /home/ubuntu/buff-bot/
 
+                     # write secrets into .env on the VM
+                    cat <<EOF | sudo tee /home/ubuntu/buff-bot/.env > /dev/null
+                    BUFF_API_TOKEN=${BUFF_API_TOKEN}
+                    TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+                    TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
+                    EOF
+
+                    sudo chmod 600 /home/ubuntu/buff-bot/.env
+                    
+
                     # make scripts executable
                     sudo /bin/chmod +x /home/ubuntu/buff-bot/start_buff.sh
                     sudo /bin/chmod +x /home/ubuntu/buff-bot/buff_script.py
