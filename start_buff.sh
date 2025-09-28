@@ -13,6 +13,6 @@ fi
 while true; do
   echo "$(date) - Starting buff_script.py"
   python3 buff_script.py
-  echo "$(date) - Finished. Sleeping for 10 seconds..."
-  sleep 10
+  echo "$(date) - Finished. Sleeping for 1hr seconds..."
+  sleep 3600
 done
