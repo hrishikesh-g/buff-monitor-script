@@ -1,4 +1,4 @@
-# Buff Bot Automation
+# 🤖 Buff Bot Automation 🚀
 
 ## Overview
 
@@ -9,7 +9,7 @@ This project ensures seamless automation from code commit to deployment without 
 
 ---
 
-## Features
+## Features ✨
 
 -   **Automated Deployment:** Pulls code from GitHub and deploys on Azure VM automatically.
 -   **Secrets Management:** Securely handles API tokens via Jenkins credentials.
@@ -19,7 +19,7 @@ This project ensures seamless automation from code commit to deployment without 
 
 ---
 
-## Architecture
+## Architecture 🗺️
 
 This diagram illustrates the core components and flow of the Buff Bot system:
 
@@ -30,7 +30,7 @@ This diagram illustrates the core components and flow of the Buff Bot system:
         C --> D(systemd Buff Bot);
         D --> E[Telegram API];
 
-## Flow
+## Flow ➡️
 
 1.  Developer pushes code to **GitHub**.
 2.  **Webhook** triggers **Jenkins pipeline**.
@@ -40,7 +40,7 @@ This diagram illustrates the core components and flow of the Buff Bot system:
 
 ---
 
-## Pipeline Flow
+## Pipeline Flow ⚙️
 
 The deployment process is fully automated via this pipeline:
 
@@ -62,7 +62,7 @@ The deployment process is fully automated via this pipeline:
         S->>V: Buff Bot Script Runs (Every 120s)
         V->>T: Sends Notifications/Alerts
 
-## Detailed Pipeline Steps
+## Detailed Pipeline Steps 🪜
 
 1.  **Code Commit** triggers Jenkins via **GitHub webhook**.
 2.  Jenkins clones the repository to the workspace.
@@ -74,7 +74,7 @@ The deployment process is fully automated via this pipeline:
 
 ---
 
-## Tech Stack
+## Tech Stack 🛠️
 
 | Category | Tool/Technology |
 | :--- | :--- |
@@ -87,8 +87,8 @@ The deployment process is fully automated via this pipeline:
 
 ---
 
-## Setup & Deployment
-
+## Setup & Deployment 📋
+ 
 1.  **Azure VM Setup:** Create Ubuntu VM with Python 3 and Jenkins installed.
 2.  **Jenkins Setup:** Configure pipeline with secrets (`BUFF_API_TOKEN`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`).
 3.  **Systemd Service:** Create `buff-bot.service` to run `start_buff.sh` in loop.
@@ -96,7 +96,7 @@ The deployment process is fully automated via this pipeline:
 
 ---
 
-## Usage
+## Usage 🟢
 
 -   Deployment triggers: **GitHub webhook** or **manual Jenkins run**.
 -   Script execution: runs every **120 seconds** automatically.
@@ -104,7 +104,7 @@ The deployment process is fully automated via this pipeline:
 
 ---
 
-## Security
+## Security 🛡️
 
 -   `.env` is **not stored in GitHub**; secrets are handled via **Jenkins credentials**.
 -   Deployment ensures `.env` file is written securely on the VM only.
