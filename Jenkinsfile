@@ -25,11 +25,11 @@ pipeline {
                     sudo /usr/bin/rsync -av --delete . /home/ubuntu/buff-bot/
 
                      # write secrets into .env on the VM
-                    cat <<EOF | sudo tee /home/ubuntu/buff-bot/.env > /dev/null
-                    BUFF_API_TOKEN=${BUFF_API_TOKEN}
-                    TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
-                    TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
-                    EOF
+cat <<EOF | sudo tee /home/ubuntu/buff-bot/.env > /dev/null
+BUFF_API_TOKEN=${BUFF_API_TOKEN}
+TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
+EOF
 
                     # set correct ownership and permissions
                     sudo chmod 600 /home/ubuntu/buff-bot/.env
