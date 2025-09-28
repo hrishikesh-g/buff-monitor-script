@@ -31,6 +31,7 @@ pipeline {
                     TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
                     EOF
 
+                    # set correct ownership and permissions
                     sudo chmod 600 /home/ubuntu/buff-bot/.env
                     
 
