@@ -1,5 +1,11 @@
 # 🤖 Buff Bot Automation 🚀
 
+## Why I made this bot
+
+This project was built to monitor the **Buff marketplace API endpoint** for new stock updates.
+Whenever a new item is listed, the bot instantly notifies me via **Telegram**, allowing me to grab the item in real-time without wasting time manually refreshing the marketplace.
+This automation saves time, reduces manual effort, and ensures I **never miss out on valuable marketplace updates**.
+
 ## Overview
 
 **Buff Bot** is an automated monitoring and notification tool deployed on an **Azure VM**.
