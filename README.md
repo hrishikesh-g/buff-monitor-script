@@ -29,12 +29,13 @@ This project ensures seamless automation from code commit to deployment without 
 
 This diagram illustrates the core components and flow of the Buff Bot system:
 
-```mermaid
-graph LR
-    A[GitHub Repo] -- Git Push --> B[Jenkins Pipeline]
-    B -- Deploy --> C[Azure VM]
-    C --> D[systemd Buff Bot]
-    D --> E[Telegram API]
+    ```mermaid
+    graph LR
+        A[GitHub Repo] -- Git Push --> B[Jenkins Pipeline]
+        B -- Deploy --> C[Azure VM]
+        C --> D[systemd Buff Bot]
+        D --> E[Telegram API]
+
 
 
 ## Flow ➡️
